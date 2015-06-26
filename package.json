@@ -1,7 +1,7 @@
 {
   "name": "react-bem-block-component",
   "version": "0.0.1",
-  "description": "A react component to simplify class assignments for BEM blocks",
+  "description": "React component to simplify class assignments for BEM blocks",
   "author": {
     "name": "Nick jaggars",
     "email": "nick@nickjaggars.com",
