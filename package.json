@@ -1,0 +1,23 @@
+{
+  "name": "react-bem-block-component",
+  "version": "0.0.1",
+  "description": "A react component to simplify class assignments for BEM blocks",
+  "author": {
+    "name": "Nick jaggars",
+    "email": "nick@nickjaggars.com",
+    "url": "http://nickjaggars.com"
+  },
+
+  "main": "./index.js",
+  "devDependencies": {
+    "babel": "^5.6.4",
+    "mocha" : "*",
+    "chai" : "*"
+  },
+
+  "scripts": {
+    "compile": "mkdir -p ./lib; babel -d lib/ src/",
+    "prepublish": "npm run compile",
+    "test" : "mocha --compilers js:babel/register"
+  }
+}
