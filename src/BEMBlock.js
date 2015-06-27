@@ -95,7 +95,7 @@ function handleMods(baseClass, bemMod) {
   }
 
   if(_.isObject(bemMod)) {
-    return _.(bemMod)
+    return _(bemMod)
       .filter( predicate => predicate)
       .map   ((_, modClass) => makeMod(baseClass, modClass))
       .value ();
