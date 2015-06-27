@@ -15,6 +15,10 @@
     "chai" : "*"
   },
 
+  "dependencies" : {
+    "react": "^0.13.3"
+  },
+
   "scripts": {
     "compile": "mkdir -p ./lib; babel -d lib/ src/",
     "prepublish": "npm run compile",
