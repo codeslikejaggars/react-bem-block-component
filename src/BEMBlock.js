@@ -27,10 +27,6 @@ export default class BEMBlock extends React.Component {
 }
 
 BEMBlock.propTypes = {
-  /**
-   *
-   * @type {[type]}
-   */
   elementType : React.PropTypes.oneOf(_.keys(React.DOM)),
   blockName : React.PropTypes.string.isRequired
 };
@@ -79,7 +75,7 @@ function bemize(reactElement, base) {
   // TODO check this doesn't cause stack overflows
   // recurse for all children
   let updatedChildren = React.Children.map(children, (child) => {
-    return bemize(child, baseClass);
+    return bemify(child, baseClass);
   });
 
   return React.cloneElement(reactElement, {
