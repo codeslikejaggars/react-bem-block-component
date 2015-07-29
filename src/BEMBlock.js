@@ -13,7 +13,7 @@ export default class BEMBlock extends React.Component {
   }
 
   render() {
-    let { blockName, bemMods, elementType } = this.props;
+    let { blockName, bemMod, elementType } = this.props;
 
     let blockClasses = [blockName];
 
