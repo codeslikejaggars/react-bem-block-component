@@ -21,7 +21,7 @@ export default class BEMBlock extends React.Component {
       Array.prototype.push.apply(blockClasses, handleMods(blockName, bemMod));
     }
 
-    return React.createElement(this.props.element, {
+    return React.createElement(elementType, {
       className : blockClasses.join(' ')
     }, this._renderChildren());
   }
@@ -36,8 +36,8 @@ BEMBlock.defaultProps = {
   elementType : React.DOM.div
 };
 
-const ELEM_SEPARATOR  = '__';
-const MOD_SEPARATOR   = '--';
+const ELEM_SEPARATOR = '__';
+const MOD_SEPARATOR = '--';
 
 let makeMod = (base, mod) => base + MOD_SEPARATOR + mod;
 let makeElem = (base, elem) => base + ELEM_SEPARATOR + elem;
@@ -76,7 +76,7 @@ function bemize(reactElement, base) {
   // TODO check this doesn't cause stack overflows
   // recurse for all children
   let updatedChildren = React.Children.map(children, (child) => {
-    return bemify(child, baseClass);
+    return bemize(child, baseClass);
   });
 
   return React.cloneElement(reactElement, {
@@ -87,7 +87,7 @@ function bemize(reactElement, base) {
 function handleMods(baseClass, bemMod) {
   // handle mods
   if (_.isString(bemMod)) {
-    return [makeMod(baseClass, modClass)];
+    return [makeMod(baseClass, bemMod)];
   }
 
   if (_.isArray(bemMod)) {
@@ -96,9 +96,9 @@ function handleMods(baseClass, bemMod) {
 
   if(_.isObject(bemMod)) {
     return _(bemMod)
-      .filter( predicate => predicate)
-      .map   ((_, modClass) => makeMod(baseClass, modClass))
-      .value ();
+      .filter(predicate => predicate)
+      .map((p, modClass) => makeMod(baseClass, modClass))
+      .value();
   }
 
   throw new Error('unable to handle type of prop `bemMod`: ' + bemMod);
