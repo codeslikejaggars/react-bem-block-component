@@ -7,22 +7,23 @@
     "email": "nick@nickjaggars.com",
     "url": "http://nickjaggars.com"
   },
-
   "main": "./index.js",
   "devDependencies": {
     "babel": "^5.6.4",
-    "mocha" : "*",
-    "chai" : "*"
+    "babel-eslint": "^4.0.5",
+    "chai": "^3.2.0",
+    "eslint": "^1.0.0",
+    "eslint-plugin-react": "^3.1.0",
+    "jsdom": "^5.6.1",
+    "mocha": "^2.2.5"
   },
-
-  "dependencies" : {
-    "react": "^0.13.3",
-    "lodash" : "^3.9.3"
+  "dependencies": {
+    "react": "^0.13.3"
   },
-
   "scripts": {
-    "compile": "mkdir -p ./lib; babel -d lib/ src/",
+    "lint": "eslint .",
+    "compile": "mkdir -p ./lib; babel ./BEMBlock.js > ./lib/BEMBlock.js",
     "prepublish": "npm run compile",
-    "test" : "mocha --compilers js:babel/register"
+    "test": "mocha --compilers js:babel/register --recursive"
   }
 }
